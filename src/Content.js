@@ -12,14 +12,15 @@ class Content extends React.Component {
   render() {
     return (
       <main className="Content">
-        <Route path="/Album/:id" component={ Album } />
-        <Route path="/Favorites" component={ Favorites } />
-        <Route path="/" component={ Login } />
-        <Route path="*" component={ NotFound } />
-        <Route path="/Profile" component={ Profile } />
-        <Route path="/Profile/Edit" component={ ProfileEdit } />
-        <Route path="/Search" component={ Search } />
-
+        <switch>
+          <Route path="/Album/:id" component={ Album } />
+          <Route path="/Favorites" component={ Favorites } />
+          <Route path="/" component={ Login } />
+          <Route path="*" component={ NotFound } />
+          <Route path="/Profile" component={ Profile } />
+          <Route path="/Profile/Edit" component={ ProfileEdit } />
+          <Route path="/Search" component={ Search } />
+        </switch>
       </main>
     );
   }
