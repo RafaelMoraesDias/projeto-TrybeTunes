@@ -15,7 +15,7 @@ class Content extends React.Component {
         <Route path="/Album/:id" component={ Album } />
         <Route path="/Favorites" component={ Favorites } />
         <Route path="/" component={ Login } />
-        <Route path="*" component={ NotFound } />
+        <Route path="*" component={ NotFound } exact />
         <Route path="/Profile" component={ Profile } />
         <Route path="/ProfileEdit" component={ ProfileEdit } />
         <Route path="/Search" component={ Search } />
