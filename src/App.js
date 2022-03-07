@@ -1,8 +1,11 @@
 import React from 'react';
+import Content from './Content';
 
 class App extends React.Component {
   render() {
-    return (<p>TrybeTuness</p>);
+    return (
+      <Content />
+    );
   }
 }
 
