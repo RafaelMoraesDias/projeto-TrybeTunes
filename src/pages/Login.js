@@ -72,3 +72,5 @@ render() {
 }
 
 export default Login;
+
+// ajuda do Imar mendes na lógica do código
