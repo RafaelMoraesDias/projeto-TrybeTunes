@@ -14,10 +14,10 @@ class Content extends React.Component {
       <main className="Content">
         <Route path="/Album/:id" component={ Album } />
         <Route path="/Favorites" component={ Favorites } />
-        <Route path="/" component={ Login } />
+        <Route path="/" component={ Login } exact />
         <Route path="*" component={ NotFound } />
-        <Route path="/Profile" component={ Profile } />
-        <Route path="/Profile/Edit" component={ ProfileEdit } exact />
+        <Route path="/profile" component={ Profile } exact />
+        <Route path="/profile/edit" component={ ProfileEdit } exact />
         <Route path="/Search" component={ Search } />
       </main>
     );
