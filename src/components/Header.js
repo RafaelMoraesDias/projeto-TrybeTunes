@@ -26,11 +26,11 @@ class Header extends React.Component {
   render() {
     const { loading, user } = this.state;
     return (
-      <header data-testid="header-component">
+      <header data-testid="header-component" className="header">
         {loading ? <Loading />
           : (<h3 data-testid="header-user-name">{ user }</h3>
           )}
-        <nav>
+        <div className="navbar">
           <NavLink
             to="/search"
             activeClassName="active"
@@ -56,7 +56,7 @@ class Header extends React.Component {
             PERFIL
 
           </NavLink>
-        </nav>
+        </div>
 
       </header>
     );

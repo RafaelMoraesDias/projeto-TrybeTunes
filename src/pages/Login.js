@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
+import Header from '../components/Header';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
 
@@ -39,33 +40,36 @@ validateButton = ({ target }) => {
 render() {
   const { disable, loading, redirection } = this.state;
   return (
-    <div data-testid="page-login">
-      { !loading ? (
-        <form>
+    <div>
+      <Header />
+      <div data-testid="page-login">
+        { !loading ? (
+          <form>
 
-          <input
-            type="text"
-            data-testid="login-name-input"
-            name="name"
-            onChange={ this.validateButton }
-          />
-          {' '}
-          NOME
+            <input
+              type="text"
+              data-testid="login-name-input"
+              name="name"
+              onChange={ this.validateButton }
+            />
+            {' '}
+            NOME
 
-          <button
-            name="username"
-            type="submit"
-            disabled={ disable }
-            data-testid="login-submit-button"
-            onClick={ this.enableButton }
-          >
-            ENTRAR
+            <button
+              name="username"
+              type="submit"
+              disabled={ disable }
+              data-testid="login-submit-button"
+              onClick={ this.enableButton }
+            >
+              ENTRAR
 
-          </button>
+            </button>
 
-        </form>
-      ) : <Loading /> }
-      {redirection && <Redirect to="/search" /> }
+          </form>
+        ) : <Loading /> }
+        {redirection && <Redirect to="/search" /> }
+      </div>
     </div>
   );
 }
