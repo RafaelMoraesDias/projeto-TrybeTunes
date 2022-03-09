@@ -3,14 +3,12 @@ import React from 'react';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
-import Loading from './Loading';
 
 class Album extends React.Component {
   constructor() {
     super();
     this.state = {
       songs: [],
-      loading: true,
     };
   }
 
@@ -22,37 +20,42 @@ class Album extends React.Component {
   fetchSongs = async (id) => {
     const response = await getMusics(id);
     const songs = response.filter((el) => el.kind === 'song');
-    const { artistName, collectionName, artworkUrl30 } = response[0];
+    const { artistName, collectionName, artworkUrl100 } = response[0];
     this.setState({
       songs,
-      loading: false,
       artistName,
       collectionName,
-      artworkUrl30,
+      artworkUrl100,
     });
   }
 
   render() {
-    const { songs, loading, artistName, collectionName, artworkUrl30 } = this.state;
+    const { songs, artistName, collectionName, artworkUrl100 } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        { loading ? <Loading />
-          : (
-            <div>
-              <h2 data-testid="artist-name">
-                { artistName }
-              </h2>
-              <h3 data-testid="album-name">
-                { collectionName }
-              </h3>
-              <img
-                src={ artworkUrl30 }
-                alt={ collectionName }
+        <div className="container">
+          <div className="infos">
+            <h2 data-testid="artist-name">
+              {artistName}
+            </h2>
+            <h3 data-testid="album-name">
+              {collectionName}
+            </h3>
+            <img
+              src={ artworkUrl100 }
+              alt={ collectionName }
+            />
+          </div>
+          <div className="player">
+            {songs.map((el) => (
+              <MusicCard
+                track={ el }
+                key={ el.trackId }
               />
-              <MusicCard track={ songs } key={ songs.trackId } />
-            </div>
-          )}
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
