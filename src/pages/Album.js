@@ -34,18 +34,19 @@ favorites = async () => {
   fetchSongs = async (id) => {
     const response = await getMusics(id);
     const songs = response.filter((el) => el.kind === 'song');
-    const { artistName, collectionName, artworkUrl100 } = response[0];
+    const { artistName, collectionName } = response[0];
+    console.log(artistName);
     this.setState({
       songs,
       artistName,
       collectionName,
-      artworkUrl100,
     });
   }
 
   render() {
-    const { songs, artistName, collectionName, artworkUrl100,
+    const { songs, artistName, collectionName,
       loading, favoritas } = this.state;
+    // console.log(artistName);
     return (
       <div data-testid="page-album">
         <Header />
@@ -55,15 +56,11 @@ favorites = async () => {
               <>
                 <div className="infos">
                   <h2 data-testid="artist-name">
-                    {artistName}
+                    { artistName }
                   </h2>
                   <h3 data-testid="album-name">
-                    {collectionName}
+                    { collectionName }
                   </h3>
-                  <img
-                    src={ artworkUrl100 }
-                    alt={ collectionName }
-                  />
                 </div>
                 <div className="player">
                   {songs.map((el) => (

@@ -90,11 +90,11 @@ class Search extends React.Component {
                       <img src={ elem.artworkUrl100 } alt="album" />
                       <p>
                         {' '}
-                        { elem.collectionName }
+                        { elem.artistName }
                       </p>
                       <p>
                         {' '}
-                        { elem.artistName }
+                        { elem.collectionName }
                         {' '}
                       </p>
                     </Link>
